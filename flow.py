@@ -1,7 +1,8 @@
-# Goal is to turn a pump on for 30 seconds every 30 minutes.
 import requests
 import time
 import RPi.GPIO as GPIO
+
+# Goal is to turn a pump on for 3 minutes or until ebb & flow aquaponic system floods, every 30 minutes
 
 global pulses
 pulses = 0
@@ -45,7 +46,7 @@ while True:
 
     global pulses
     localPulses = pulses
-    stop = time.time() + 60*5
+    stop = time.time() + 60*3
 
     # Turn pump on for duration OR until grow bed starts draining
     while time.time() < stop or localPulses < pulses:
