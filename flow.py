@@ -46,10 +46,11 @@ while True:
 
     global pulses
     localPulses = pulses
-    stop = time.time() + 60*3
+    stop = time.time() + 60*1.5
 
-    # Turn pump on for duration OR until grow bed starts draining
-    while time.time() < stop or localPulses < pulses:
+    # Turn pump on for flood duration (measured before coding)
+    # OR until grow bed starts draining. 10 pulses subbed from global to adjust for my leaky dang drain pipe.
+    while time.time() < stop or localPulses < (pulses - 10):
 
         # Don't know how to read plug status just yet, so will assume
         # it all works until I actually code up some error handling :)
