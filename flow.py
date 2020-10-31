@@ -1,5 +1,6 @@
 import requests
 import time
+from datetime import datetime
 import RPi.GPIO as GPIO
 
 # Goal is to turn a pump on for 3 minutes or until ebb & flow aquaponic system floods, every 30 minutes
@@ -15,13 +16,13 @@ GPIO.setup(FLOW_SENSOR, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 def turn_pump_off():
     requests.post('https://maker.ifttt.com/trigger/turn_pump_off/with/key/SECRETS_HERE',
                   params={"value1": "none", "value2": "none", "value3": "none"})
-    print("Turned pump off at "+str(time.time()))
+    print("Turned pump off at "+str(datetime.fromtimestamp(time.time())))
 
 
 def turn_pump_on():
     requests.post('https://maker.ifttt.com/trigger/turn_pump_on/with/key/SECRETS_HERE',
                   params={"value1": "none", "value2": "none", "value3": "none"})
-    print("Turned pump on at "+str(time.time()))
+    print("Turned pump on at "+str(datetime.fromtimestamp(time.time())))
 
 
 # Callback when gpio pin changes value, signifying flow meter pulse. Keep simple right now to a count, but
@@ -29,12 +30,12 @@ def turn_pump_on():
 def pulseCallback(channel):
     global pulses
     pulses += 1
-    print("Detected flowing water at " + str(time.time()))
+    print("Detected flowing water at " + str(datetime.fromtimestamp(time.time())))
 
 
 GPIO.add_event_detect(FLOW_SENSOR, GPIO.FALLING, callback=pulseCallback)
 
-print("Starting control program at " + str(time.time()))
+print("Starting control program at " + str(datetime.fromtimestamp(time.time())))
 turned_on = False
 while True:
     # Make sure everything is off.
@@ -63,7 +64,7 @@ while True:
         time.sleep(5)
 
     # Either time ran out or drain began, so turn off pump if it's not already
-    print("Initiating drain sequence at " + str(time.time()))
+    print("Initiating drain sequence at " + str(datetime.fromtimestamp(time.time())))
     if turned_on:
         turn_pump_off()
         time.sleep(5)
