@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 import RPi.GPIO as GPIO
 
-# Goal is to turn a pump on for 1.5 minutes or until ebb & flow aquaponic system floods, every 30 minutes
+# Goal is to turn a pump on for 15 minutes every 4 hours.
 
 global pulses, turned_on
 pulses = 0
@@ -60,12 +60,11 @@ while True:
         time.sleep(5)
         turned_on = False  
 
-    localPulses = pulses
-    stop = time.time() + 60*1.5
+    stop = time.time() + 60*15
 
-    # Turn pump on for flood duration (measured before coding)
-    # OR until grow bed starts draining. 10 pulses subbed from global to adjust for my leaky dang drain pipe.
-    while time.time() < stop and localPulses > (pulses - 10):        
+    # Turn pump on for flood duration.
+    # TODO: Don't run during night time
+    while time.time() < stop:
         
         # Don't know how to read plug status just yet, so will assume
         # it all works until I actually code up some error handling :)
@@ -84,5 +83,5 @@ while True:
         time.sleep(5)
         turned_on = False
 
-    print("ZzzzZZZzzzzzzZZZZZ ...Sleeping for 30 minutes... ZzzzZZZzzzzzzZZZZZ")
-    time.sleep(60*30)
+    print("ZzzzZZZzzzzzzZZZZZ ...Sleeping for 4 hours ... ZzzzZZZzzzzzzZZZZZ")
+    time.sleep(60*60*4)
