@@ -1,4 +1,4 @@
-# IOT Aquaponics in NYC; a thrilling & expensive romaine lettuce.
+# IOT Aquaponics in NYC; a thrilling & expensive fish-poop salad.
 
 ## Goal
 I want to serve my friends lettuce that I grew myself, fertilized by fish-poop generated nitrates from a Recirculating Aquaculture System in my bedroom, and managed by the internet (of things!). 
