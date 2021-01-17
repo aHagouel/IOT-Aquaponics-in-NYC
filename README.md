@@ -85,11 +85,15 @@ Here's the 5 minute, pen and paper science fair design (I have lots of cool colo
 - [And many, many more.](https://en.wikipedia.org/wiki/Aquaponics#Current_examples)
 
 ## System in action
-Not all requirements have been fulfilled yet, but the system has been up and running for the month f November & December. I'll film a video when I'm home from a lil vacation (oh, what?! It's working?! Yeaaaaaahhh!!!), but for now here are a few pictures of the system & growth. 
+Not all requirements have been fulfilled yet, but the system has been up and running since Nov 2020! 2 harvests later and I'm a happy, healthier camper.  
 
 *Whole system:*
 
-![System selfie](https://i.imgur.com/DawOkqA.png)
+![System selfie](https://i.imgur.com/qzEM4w1.jpg)
+
+*Emma trying the first harvest (click image for video)*
+
+[![First Harvest reaction](https://i.imgur.com/70IR66U.png)](https://i.imgur.com/wnKdEuh.mp4 "Emma's Reaction")
 
 *Seed germination:*
 
@@ -101,7 +105,7 @@ Not all requirements have been fulfilled yet, but the system has been up and run
 
 *Growth so far:*
 
-![My best grower](https://i.imgur.com/kHlQGqE.jpg?1)
+![My best growers](https://i.imgur.com/sOCPzv9.png)
 
 *What I'd do differently:*
 - I was originally planning on just flooding until the grow bed flooded, and stop after water flow was detected. This would have been cool but the plants definitely did not get enough nutrients so I scrapped that idea.
@@ -134,14 +138,14 @@ Not all requirements have been fulfilled yet, but the system has been up and run
 ## Next steps
 
 For this system:
-- Complete water monitoring dashboards 
+- Complete water monitoring dashboard, publish from local host
 - Trigger water heater when temp drops 
-- Feed 1 piece of lettuce to a friend and film it for this report 
 - ----------------------- Project's done ----------------------- 
 - Diversify greens grown, include propagating houseplants
 - Expand water parameter measurements
 
 For my interests:
+- Image classification ML to get a text when fish are hungry (nipping at top of water)
 - Design an indoor vertical aquaponic system at 50x scale
 - Understand energy requirements & technologies for commercial operations
 - Join a "grown by the future" community in NYC
