@@ -5,7 +5,7 @@ from datetime import datetime
 import schedule
 import RPi.GPIO as GPIO
 
-# Goal is to turn a pump on for 15 minutes every ~4 hours in the day.
+# Goal is to turn a pump on for 15 minutes every ~3.5 hours.
 
 global turned_on
 turned_on = False
@@ -14,7 +14,7 @@ turned_on = False
 def turn_pump_off():
     global turned_on
     try:
-        requests.post('https://maker.ifttt.com/trigger/turn_pump_off/with/key/kS-Czz-XkmLdb0jxKtfWxws9_kzb1c4elafZQbxdwUi',
+        requests.post('https://maker.ifttt.com/trigger/turn_pump_off/with/key/KEY_SECRET',
                   params={"value1": "none", "value2": "none", "value3": "none"})
         turned_on = False
         print("Turned pump off at "+str(datetime.fromtimestamp(time.time())))
@@ -28,7 +28,7 @@ def turn_pump_off():
 def turn_pump_on():
     global turned_on
     try:
-        requests.post('https://maker.ifttt.com/trigger/turn_pump_on/with/key/<SECRETS!>',
+        requests.post('https://maker.ifttt.com/trigger/turn_pump_on/with/key/KEY_SECRET',
                   params={"value1": "none", "value2": "none", "value3": "none"})
         turned_on = True
         print("Turned pump on at "+ str(datetime.fromtimestamp(time.time())))
@@ -49,7 +49,7 @@ def run_pump_sequence():
 
     # If outside my sleepy hours, turn pump on for 15 min duration.
     print("Starting flood sequence at " + str(datetime.now()))
-    stop = time.time() + 60*15
+    stop = time.time() + 60*20
     while (time.time() < stop):
         # Don't know how to read plug status just yet, so will assume
         # it all works until I actually code up some error handling :)
@@ -68,10 +68,11 @@ def run_pump_sequence():
         turned_on = False
 
 
-schedule.every().day.at("09:00").do(run_pump_sequence)
-schedule.every().day.at("13:00").do(run_pump_sequence)
+schedule.every().day.at("08:30").do(run_pump_sequence)
+schedule.every().day.at("11:00").do(run_pump_sequence)
+schedule.every().day.at("14:00").do(run_pump_sequence)
 schedule.every().day.at("17:00").do(run_pump_sequence)
-schedule.every().day.at("21:00").do(run_pump_sequence)
+schedule.every().day.at("20:00").do(run_pump_sequence)
 
 while True:
     schedule.run_pending()
